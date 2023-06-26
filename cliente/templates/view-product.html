@@ -1,0 +1,155 @@
+{% extends 'base.html' %} {% block content %} {% load static%}
+<nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../Home.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        class="bi bi-stripe"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm6.226 5.385c-.584 0-.937.164-.937.593 0 .468.607.674 1.36.93 1.228.415 2.844.963 2.851 2.993C11.5 11.868 9.924 13 7.63 13a7.662 7.662 0 0 1-3.009-.626V9.758c.926.506 2.095.88 3.01.88.617 0 1.058-.165 1.058-.671 0-.518-.658-.755-1.453-1.041C6.026 8.49 4.5 7.94 4.5 6.11 4.5 4.165 5.988 3 8.226 3a7.29 7.29 0 0 1 2.734.505v2.583c-.838-.45-1.896-.703-2.734-.703Z"
+        />
+      </svg>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mynavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Hombre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products-mujer.html">Mujer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sales.html">Sale</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="listado-productos.html">Admin</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input
+          class="form-control me-2 rounded-pill"
+          type="text"
+          placeholder="Search"
+        />
+      </form>
+      <a href="carro.html">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="dark"
+          class="bi bi-cart-check-fill mx-2"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"
+          />
+        </svg>
+      </a>
+      <a href="login.html">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="35"
+          height="35"
+          fill="dark"
+          class="bi bi-person"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid px-5 bg-light my-5" style="min-height: 100vh">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12 col-lg-9">
+          <div class="row">
+            <div class="col-6">
+              <img
+                src="../imgs/CU9307_106_A_PREM.webp"
+                class="img-fluid py-1"
+                width="100%"
+                alt=""
+              />
+            </div>
+            <div class="col-6">
+              <img
+                src="../imgs/CU9307_106_A_PREM.webp"
+                class="img-fluid py-1"
+                alt=""
+              />
+            </div>
+            <div class="col-6">
+              <img
+                src="../imgs/CU9307_106_A_PREM.webp"
+                class="img-fluid py-1"
+                alt=""
+              />
+            </div>
+            <div class="col-6">
+              <img
+                src="../imgs/CU9307_106_A_PREM.webp"
+                class="img-fluid py-1"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-3 px-3 text-center">
+          <h2 class="mt-5 fw-bold display-6">Jordan 7</h2>
+          <p class="fw-bold">$300.000</p>
+          <p class="mt-4">Descripcion</p>
+          <small class="py-1 d-block text-center"
+            >Kickflips y tailslides. Dimes y dunks. NikeSB y Jordan. Algunas
+            cosas simplemente van mejor juntas. Uniendo fuerzas una vez más,
+            Nike SB y Jordan modificaron el diseño AJ4 para que puedas patinar
+            todo el día y conseguir grandes trucos. La parte superior
+            deconstruida se adapta rápidamente: los detalles de plástico más
+            suaves y flexibles los mantienen flexibles durante largas sesiones y
+            la amortiguación en el talón te permite manejar esos épicos conteos
+            de escaleras. Hablando de trucos, aerodinamizamos el interior del
+            antepié para una mejor sensación con la tabla y un movimiento
+            impecable. Súbete a él, será un viaje salvaje. Beneficios
+            •Directamente desde la bóveda, los bloques de color llevan el estilo
+            heredado de AJ4. •La tecnología Nike Air absorbe el impacto para
+            brindar amortiguación en cada paso. •La goma de caucho zonal en la
+            suela agrega tracción donde más la necesitas</small
+          >
+
+          <div class="form-group my-3">
+            <label for="size">Selecciona tu talla de zapatilla:</label>
+            <select class="form-control" id="size">
+              <option value="">Selecciona una talla</option>
+              <option value="39">39</option>
+              <option value="39.5">39.5</option>
+              <option value="40">40</option>
+            </select>
+          </div>
+
+          <a href="carro.html" class="btn btn-dark mt-2">Agregar al carro</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

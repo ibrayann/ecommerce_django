@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {% block content %} {% load static%}
+<div class="container-fluid">
+  <div class="row my-auto vh-100">
+    <div class="col-md-8 col-sm-10 mx-auto my-auto">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <a
+              href="{% url 'home' %}"
+              class="text-center btn btn-dark mt-3 mx-3"
+              >Ir al inicio</a
+            >
+            <h1 class="fw-bold text-center my-5">Registrate</h1>
+            <div class="d-flex justify-content-center">
+              <form id="formulario" class="w-100 px-5">
+                <label class="mb-2" for="userName"
+                  >Nombre (minimo 3 caracteres)</label
+                >
+                <input
+                  class="form-control mb-2"
+                  name="userName"
+                  placeholder="Ingrese su nombre"
+                  autocomplete="off"
+                  id="userName"
+                  type="text"
+                  value=""
+                />
+
+                <p class="text-danger mb-2 d-none" id="alertName"></p>
+
+                <label class="mb-2" for="userLastName"
+                  >Apellido (minimo 3 caracteres)</label
+                >
+                <input
+                  class="form-control mb-2"
+                  name="userLastName"
+                  placeholder="Ingrese su Apellido"
+                  autocomplete="off"
+                  id="userLastName"
+                  type="text"
+                  value=""
+                />
+
+                <p class="text-danger mb-2 d-none" id="alertLastName"></p>
+
+                <label class="mb-2" for="userEmail">Email</label>
+                <input
+                  class="form-control mb-2"
+                  name="userEmail"
+                  placeholder="Ingrese su correo"
+                  id="userEmail"
+                  autocomplete="off"
+                  type="email"
+                  value=""
+                />
+
+                <p class="text-danger mb-2 d-none" id="alertEmail"></p>
+
+                <label class="mb-2" for="userDireccion"
+                  >Direccion (minimo 10 caracteres)</label
+                >
+                <input
+                  class="form-control mb-2"
+                  name="userDireccion"
+                  placeholder="Ingrese su Direccion"
+                  autocomplete="off"
+                  id="userDireccion"
+                  type="text"
+                  value="Paicaví 3280, Concepción, Bío Bío"
+                />
+
+                <p class="text-danger mb-2 d-none" id="alertDireccion"></p>
+
+                <label class="mb-2" for="userPassword"
+                  >Contraseña (minimo 10 caracteres)</label
+                >
+                <input
+                  class="form-control mb-2"
+                  name="userPassword"
+                  placeholder="Ingrese su contraseña"
+                  autocomplete="off"
+                  id="userPassword"
+                  type="password"
+                  value=""
+                />
+
+                <p class="text-danger mb-2 d-none" id="alertPassword"></p>
+
+                <button class="btn btn-dark" type="submit">Enviar</button>
+              </form>
+            </div>
+            <div
+              class="alert alert-success mt-2 d-none w-75 mx-auto"
+              id="alertSuccess"
+            ></div>
+          </div>
+          <div class="col-md-6 d-none d-sm-block">
+            <img
+              src="{% static 'app/img/AirForce_ToutPrincipal_Mobile_29-03-2023.png'%}"
+              alt="Login-image"
+              class="img-fluid h-100"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Form -->
+{% endblock %}

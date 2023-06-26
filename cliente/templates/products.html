@@ -1,0 +1,430 @@
+{% extends 'base.html' %} {% block content %}
+<div class="bg-primary text-center">
+  <h1 class="text-light py-5 fw-bolder">TODO HOMBRE</h1>
+</div>
+<div class="container-fluid px-5 mt-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-2">
+      <div class="card mb-4">
+        <div class="card-body">
+          <form>
+            <h5>Filtrar por:</h5>
+            <div class="form-group my-2">
+              <label for="talla">Talla:</label>
+              <select class="form-control" id="talla">
+                <option value="">Todas las tallas</option>
+                <option value="39">39</option>
+                <option value="39.5">39.5</option>
+                <option value="40">40</option>
+              </select>
+            </div>
+            <div class="form-group my-2">
+              <label for="marca">Marca:</label>
+              <select class="form-control" id="marca">
+                <option value="">Todas las marcas</option>
+                <option value="nike">Nike</option>
+                <option value="adidas">Adidas</option>
+                <option value="puma">Puma</option>
+              </select>
+            </div>
+            <div class="form-group my-2">
+              <label for="precio">Precio:</label>
+              <select class="form-control" id="precio">
+                <option value="">Todos los precios</option>
+                <option value="menor">Menor a $50.000</option>
+                <option value="medio">$50.000 a $100.000</option>
+                <option value="mayor">Mayor a $100.000</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-dark">Filtrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
+      <div class="row">
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DO7193_051_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Jordan One Take 4</h5>
+              <small class="fw-bold">$126.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DX1690_400_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Jordan XXXVII</h5>
+              <small class="fw-bold"> $226.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DJ5423_001_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Lebron XX</h5>
+              <small class="fw-bold"> $222.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DM1123_400_A_PREM-hei-3144-wid-3144-fmt.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Lebron Witness 7</h5>
+              <small class="fw-bold"> $109.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DM1124_400_A_PREM-hei-3144-wid-3144-fmt.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Nike Air Impact 4</h5>
+              <small class="fw-bold"> $94.999</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DM0032_005_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Max Plus</h5>
+              <small class="fw-bold">$194.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DX4332_800_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Jordan Mid SE</h5>
+              <small class="fw-bold"> $226.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/FJ1044_800_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Force Low 1</h5>
+              <small class="fw-bold">$164.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DV0820_100_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Zoom Flight 95</h5>
+              <small class="fw-bold"> $109.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DN1772_164_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Luka 1</h5>
+              <small class="fw-bold"> $126.999</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DM0028_002_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Max 97 OG</h5>
+              <small class="fw-bold">$145.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DQ5674_001_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Penny li Sp</h5>
+              <small class="fw-bold"> $199.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/CU9307_106_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Jordan 7 Retro</h5>
+              <small class="fw-bold"> $226.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DZ0482_200_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Max 1 Prm</h5>
+              <small class="fw-bold"> $176.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/CT8019_034_A_PREM-hei-3144-wid-3144-fmt.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Jordan 9 Retro</h5>
+              <small class="fw-bold"> $224.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/CU4826_105_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Max AP</h5>
+              <small class="fw-bold"> $139.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/FD0808_001_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Trainer 1</h5>
+              <small class="fw-bold"> $146.990</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="../imgs/DV0828_100_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Dunk Hi Retro</h5>
+              <small class="fw-bold"> $132.999</small>
+              <a
+                href="view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer xd -->
+<!-- Footer -->
+{% endblock %}

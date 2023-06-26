@@ -1,0 +1,304 @@
+{% extends 'base.html' %} {% block content %} {% load static%}
+<!-- Navbar -->
+
+<!-- Carrusel -->
+<div
+  id="carouselExampleControls"
+  class="carousel slide bg-dark"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active text-center">
+      <p class="text-light my-0 py-4" id="dolar"></p>
+    </div>
+    <div class="carousel-item text-center">
+      <p class="text-light my-0 py-4" id="euro"></p>
+    </div>
+    <div class="carousel-item text-center">
+      <p class="text-light my-0 py-4" id="bitcoin"></p>
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Page -->
+<div class="container-fluid px-5 bg-light">
+  <div class="row">
+    <div
+      class="col-12 bg-primary text-center py-5 mt-5 d-flex justify-content-center flex-column align-items-center"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="50"
+        height="50"
+        fill="white"
+        class="bi bi-stripe"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm6.226 5.385c-.584 0-.937.164-.937.593 0 .468.607.674 1.36.93 1.228.415 2.844.963 2.851 2.993C11.5 11.868 9.924 13 7.63 13a7.662 7.662 0 0 1-3.009-.626V9.758c.926.506 2.095.88 3.01.88.617 0 1.058-.165 1.058-.671 0-.518-.658-.755-1.453-1.041C6.026 8.49 4.5 7.94 4.5 6.11 4.5 4.165 5.988 3 8.226 3a7.29 7.29 0 0 1 2.734.505v2.583c-.838-.45-1.896-.703-2.734-.703Z"
+        />
+      </svg>
+      <h1 class="fw-bold text-light mx-auto mt-4">TEMPORADA DE OFERTAS</h1>
+      <p class="fw-bold text-light">3x2 en productos seleccionados</p>
+      <a
+        href="pages/sales.html"
+        class="btn btn-light rounded-pill py-2 px-4 mt-3"
+        >Comprar</a
+      >
+    </div>
+    <div class="col-12 p-0">
+      <img
+        class="w-100 my-5 d-none d-md-block img-fluid"
+        src="imgs/AirForce_ToutPrincipal_Desktop_29-03-2023 (1).png"
+        alt=""
+      />
+      <img
+        class="w-100 my-5 d-sm-block d-md-none"
+        src="imgs/AirForce_ToutPrincipal_Mobile_29-03-2023.png"
+        alt=""
+      />
+    </div>
+    <div class="col-12 d-flex align-items-center flex-column">
+      <h2 class="text-center fw-bold display-3">CLÁSICOS PARA TODOS</h2>
+      <p class="fw-bold">Revoluciona tu estilo con Air Force 1</p>
+      <a
+        href="pages/view-product.html"
+        class="btn btn-outline-primary rounded-pill py-2 px-4 mt-3"
+        >Comprar</a
+      >
+    </div>
+
+    <div class="col-12 my-5">
+      <div class="row">
+        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
+          <div class="card h-100">
+            <img src={% static 'app/img/DD1391_100_A.webp' %}
+            class="card-img-top" alt="..." />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Jordan 1</h5>
+              <a
+                href="pages/view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="imgs/553558_063_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Air Jordan 1 Low</h5>
+              <a
+                href="pages/view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="{% static 'app/img/805899_202_A_PREM.webp'%}"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Nike Lunar Force 1 Duckboot</h5>
+              <a
+                href="pages/view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="imgs/DH3158_002_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">Nike Court Vision Low Next Nature</h5>
+              <a
+                href="pages/view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="imgs/CD7783_110_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">
+                Nike Court Borough Mid 2 Little Kids' Shoes
+              </h5>
+              <a
+                href="pages/view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
+          <div class="card h-100">
+            <img
+              src="imgs/DR2402_100_A_PREM.webp"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body d-flex flex-column justify-content-between align-items-start"
+            >
+              <h5 class="card-title">W NIKE AIR MAX EXCEE</h5>
+              <a
+                href="pages/view-product.html"
+                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
+                >Comprar</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card mb-5">
+        <img
+          src="imgs/ZapasparaEl_HSec_Desktop__20-03-2023.png"
+          class="card-img img-fluid"
+          alt="..."
+          style="min-height: 400px"
+        />
+        <div
+          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
+        >
+          <h5 class="card-title text-white">Estilos para él</h5>
+          <a
+            href="pages/view-product.html"
+            class="btn btn-dark rounded-pill py-2 px-4 mt-1"
+            >Comprar</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 mb-3">
+      <div class="card">
+        <img
+          src="imgs/Bras_Tights_ToutDoble-03-04-2023.png"
+          class="card-img img-fluid"
+          alt="..."
+        />
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 mb-3">
+      <img
+        src="imgs/NikeTrail_ToutDoble-03-04-2023.png"
+        class="card-img img-fluid"
+        alt="..."
+      />
+    </div>
+    <div class="col-md-4 col-sm-12 mb-2">
+      <div class="card">
+        <img
+          src="imgs/ToutTriple-AF1-07-03-2023.png"
+          alt=""
+          class="w-100 card-img-top"
+        />
+        <div
+          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
+        >
+          <a
+            href="pages/view-product.html"
+            class="btn btn-dark rounded-pill py-2 px-4 mt-1"
+            >Air Force 1</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12 mb-2">
+      <div class="card">
+        <img
+          src="imgs/ToutTriple-AJ1-07-03-2023.png"
+          alt=""
+          class="w-100 card-img-top"
+        />
+        <div
+          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
+        >
+          <a
+            href="pages/view-product.html"
+            class="btn btn-dark rounded-pill py-2 px-4 mt-1"
+            >Air Force 1</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12 mb-2">
+      <div class="card">
+        <img
+          src="imgs/ToutTriple-Blazer-07-03-2023.png"
+          alt=""
+          class="w-100 card-img-top"
+        />
+        <div
+          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
+        >
+          <a
+            href="pages/view-product.html"
+            class="btn btn-dark rounded-pill py-2 px-4 mt-1"
+            >Air Force 1</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- aca va el consumo de api de dolar en JS-->
+
+<!-- Footer -->
+
+<!-- Footer -->
+{% endblock %}
