@@ -11,83 +11,79 @@
               >Ir al inicio</a
             >
             <h1 class="fw-bold text-center my-5">Registrate</h1>
-            <div class="d-flex justify-content-center">
-              <form id="formulario" class="w-100 px-5">
-                <label class="mb-2" for="userName"
-                  >Nombre (minimo 3 caracteres)</label
-                >
+            <div class="d-flex justify-content-center flex-column">
+              <form method="POST" id="formulario" class="px-5">
+                {% csrf_token %}
+                <label for="username" class="form-label">Username:</label>
                 <input
-                  class="form-control mb-2"
-                  name="userName"
-                  placeholder="Ingrese su nombre"
-                  autocomplete="off"
-                  id="userName"
                   type="text"
-                  value=""
+                  id="username"
+                  name="username"
+                  class="form-control mb-3"
+                  required
                 />
 
-                <p class="text-danger mb-2 d-none" id="alertName"></p>
-
-                <label class="mb-2" for="userLastName"
-                  >Apellido (minimo 3 caracteres)</label
-                >
+                <label for="password" class="form-label">Password:</label>
                 <input
-                  class="form-control mb-2"
-                  name="userLastName"
-                  placeholder="Ingrese su Apellido"
-                  autocomplete="off"
-                  id="userLastName"
-                  type="text"
-                  value=""
-                />
-
-                <p class="text-danger mb-2 d-none" id="alertLastName"></p>
-
-                <label class="mb-2" for="userEmail">Email</label>
-                <input
-                  class="form-control mb-2"
-                  name="userEmail"
-                  placeholder="Ingrese su correo"
-                  id="userEmail"
-                  autocomplete="off"
-                  type="email"
-                  value=""
-                />
-
-                <p class="text-danger mb-2 d-none" id="alertEmail"></p>
-
-                <label class="mb-2" for="userDireccion"
-                  >Direccion (minimo 10 caracteres)</label
-                >
-                <input
-                  class="form-control mb-2"
-                  name="userDireccion"
-                  placeholder="Ingrese su Direccion"
-                  autocomplete="off"
-                  id="userDireccion"
-                  type="text"
-                  value="Paicaví 3280, Concepción, Bío Bío"
-                />
-
-                <p class="text-danger mb-2 d-none" id="alertDireccion"></p>
-
-                <label class="mb-2" for="userPassword"
-                  >Contraseña (minimo 10 caracteres)</label
-                >
-                <input
-                  class="form-control mb-2"
-                  name="userPassword"
-                  placeholder="Ingrese su contraseña"
-                  autocomplete="off"
-                  id="userPassword"
                   type="password"
-                  value=""
+                  id="password"
+                  name="password"
+                  class="form-control mb-3"
+                  required
                 />
 
-                <p class="text-danger mb-2 d-none" id="alertPassword"></p>
+                <label for="email" class="form-label">Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control mb-3"
+                  required
+                />
 
-                <button class="btn btn-dark" type="submit">Enviar</button>
+                <button type="submit" class="btn btn-dark">
+                  Crear usuario
+                </button>
               </form>
+              <div id="alertSuccess" class="d-none">Registro exitoso</div>
+
+              <div id="alertError" class="d-none">Error en el registro:</div>
+
+              <script>
+                const formulario = document.getElementById("formulario");
+                const userName = document.getElementById("username");
+                const userPassword = document.getElementById("userpassword");
+                const userEmail = document.getElementById("useremail");
+                const alertSuccess = document.getElementById("alertSuccess");
+                const alertError = document.getElementById("alertError");
+
+                formulario.addEventListener("submit", async (e) => {
+                  e.preventDefault();
+
+                  alertSuccess.classList.add("d-none");
+                  alertError.classList.add("d-none");
+
+                  const response = await fetch("/register/", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams(new FormData(formulario)),
+                  });
+
+                  if (response.ok) {
+                    const data = await response.json();
+                    alertSuccess.classList.add("d-block");
+                    alertSuccess.classList.remove("d-none");
+                    alertSuccess.textContent = data.mensaje;
+                  } else {
+                    const data = await response.json();
+                    alertSuccess.classList.add("d-block");
+                    alertError.classList.remove("d-none");
+                    alertError.textContent = data.errores.join("\n");
+                  }
+                });
+              </script>
             </div>
             <div
               class="alert alert-success mt-2 d-none w-75 mx-auto"

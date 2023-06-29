@@ -67,13 +67,13 @@
     <div class="col-12 p-0">
       <img
         class="w-100 my-5 d-none d-md-block img-fluid"
-        src="imgs/AirForce_ToutPrincipal_Desktop_29-03-2023 (1).png"
-        alt=""
+        src="{% static 'app/img/AirForce_ToutPrincipal_Desktop_29-03-2023 (1).png' %}"
+        alt="Mi imagen"
       />
       <img
         class="w-100 my-5 d-sm-block d-md-none"
-        src="imgs/AirForce_ToutPrincipal_Mobile_29-03-2023.png"
-        alt=""
+        src="{% static 'app/img/AirForce_ToutPrincipal_Mobile_29-03-2023.png' %}"
+        alt="Mi imagen"
       />
     </div>
     <div class="col-12 d-flex align-items-center flex-column">
@@ -88,125 +88,29 @@
 
     <div class="col-12 my-5">
       <div class="row">
+        {% for product in products|slice:":6" %}
         <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
           <div class="card h-100">
-            <img src={% static 'app/img/DD1391_100_A.webp' %}
-            class="card-img-top" alt="..." />
+            <img src="{{ product.image.url }}" class="card-img-top" alt="..." />
             <div
               class="card-body d-flex flex-column justify-content-between align-items-start"
             >
-              <h5 class="card-title">Jordan 1</h5>
+              <h5 class="card-title">{{ product.name }}</h5>
               <a
-                href="pages/view-product.html"
+                href="{% url 'detalle_producto' product.id %}"
                 class="btn btn-dark rounded-pill py-2 px-4 mt-3"
                 >Comprar</a
               >
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
-          <div class="card h-100">
-            <img
-              src="imgs/553558_063_A_PREM.webp"
-              class="card-img-top"
-              alt="..."
-            />
-            <div
-              class="card-body d-flex flex-column justify-content-between align-items-start"
-            >
-              <h5 class="card-title">Air Jordan 1 Low</h5>
-              <a
-                href="pages/view-product.html"
-                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
-                >Comprar</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
-          <div class="card h-100">
-            <img
-              src="{% static 'app/img/805899_202_A_PREM.webp'%}"
-              class="card-img-top"
-              alt="..."
-            />
-            <div
-              class="card-body d-flex flex-column justify-content-between align-items-start"
-            >
-              <h5 class="card-title">Nike Lunar Force 1 Duckboot</h5>
-              <a
-                href="pages/view-product.html"
-                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
-                >Comprar</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
-          <div class="card h-100">
-            <img
-              src="imgs/DH3158_002_A_PREM.webp"
-              class="card-img-top"
-              alt="..."
-            />
-            <div
-              class="card-body d-flex flex-column justify-content-between align-items-start"
-            >
-              <h5 class="card-title">Nike Court Vision Low Next Nature</h5>
-              <a
-                href="pages/view-product.html"
-                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
-                >Comprar</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
-          <div class="card h-100">
-            <img
-              src="imgs/CD7783_110_A_PREM.webp"
-              class="card-img-top"
-              alt="..."
-            />
-            <div
-              class="card-body d-flex flex-column justify-content-between align-items-start"
-            >
-              <h5 class="card-title">
-                Nike Court Borough Mid 2 Little Kids' Shoes
-              </h5>
-              <a
-                href="pages/view-product.html"
-                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
-                >Comprar</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 col-xl-2 mb-2">
-          <div class="card h-100">
-            <img
-              src="imgs/DR2402_100_A_PREM.webp"
-              class="card-img-top"
-              alt="..."
-            />
-            <div
-              class="card-body d-flex flex-column justify-content-between align-items-start"
-            >
-              <h5 class="card-title">W NIKE AIR MAX EXCEE</h5>
-              <a
-                href="pages/view-product.html"
-                class="btn btn-dark rounded-pill py-2 px-4 mt-3"
-                >Comprar</a
-              >
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
     <div class="col-12">
       <div class="card mb-5">
         <img
-          src="imgs/ZapasparaEl_HSec_Desktop__20-03-2023.png"
+          src="{% static 'app/img/ZapasparaEl_HSec_Desktop__20-03-2023.png' %}"
           class="card-img img-fluid"
           alt="..."
           style="min-height: 400px"
@@ -226,7 +130,7 @@
     <div class="col-md-6 col-sm-12 mb-3">
       <div class="card">
         <img
-          src="imgs/Bras_Tights_ToutDoble-03-04-2023.png"
+          src="{% static 'app/img/Bras_Tights_ToutDoble-03-04-2023.png' %}"
           class="card-img img-fluid"
           alt="..."
         />
@@ -234,7 +138,7 @@
     </div>
     <div class="col-md-6 col-sm-12 mb-3">
       <img
-        src="imgs/NikeTrail_ToutDoble-03-04-2023.png"
+        src="{% static 'app/img/NikeTrail_ToutDoble-03-04-2023.png' %}"
         class="card-img img-fluid"
         alt="..."
       />
@@ -242,7 +146,7 @@
     <div class="col-md-4 col-sm-12 mb-2">
       <div class="card">
         <img
-          src="imgs/ToutTriple-AF1-07-03-2023.png"
+          src="{% static 'app/img/ToutTriple-AF1-07-03-2023.png' %}"
           alt=""
           class="w-100 card-img-top"
         />
@@ -260,7 +164,7 @@
     <div class="col-md-4 col-sm-12 mb-2">
       <div class="card">
         <img
-          src="imgs/ToutTriple-AJ1-07-03-2023.png"
+          src="{% static 'app/img/ToutTriple-AJ1-07-03-2023.png' %}"
           alt=""
           class="w-100 card-img-top"
         />
@@ -278,7 +182,7 @@
     <div class="col-md-4 col-sm-12 mb-2">
       <div class="card">
         <img
-          src="imgs/ToutTriple-Blazer-07-03-2023.png"
+          src="{% static 'app/img/ToutTriple-Blazer-07-03-2023.png' %}"
           alt=""
           class="w-100 card-img-top"
         />

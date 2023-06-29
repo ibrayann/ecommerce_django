@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.humanize',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -41,6 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cliente'
 ]
+
+AUTH_USER_MODEL = 'cliente.User'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

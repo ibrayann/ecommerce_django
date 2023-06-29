@@ -35,7 +35,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     brand = models.CharField(max_length=50, choices=BRAND_CHOICES)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.IntegerField()
     size = models.CharField(max_length=10)
     gender = models.CharField(max_length=20)
     model = models.CharField(max_length=50)
