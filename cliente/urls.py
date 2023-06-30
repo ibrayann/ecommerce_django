@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('register/', views.register, name='register'),
-    path('login/', views.login, name='login'),
+    path('login/', views.user_login, name='login'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('add_to_cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
     path('cart/', views.cart, name='cart'),
@@ -16,4 +16,10 @@ urlpatterns = [
     path('productos/', views.listarproductos, name='listar_productos'),
     path('editarprod/<id>/', views.editar_producto,name="editar_producto"),
     path('eliminarprod/<id>/',views.eliminar_producto,name="eliminar_producto"),
+    path('logout/', views.logout_view, name='logout'),
+    path('agregar-al-carrito/<int:product_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),
+    path('carrito/', views.carrito, name='carrito'),
+    path('disminuir_cantidad/<int:cart_item_id>/', views.disminuir_cantidad, name='disminuir_cantidad'),
+    path('aumentar_cantidad/<int:cart_item_id>/', views.aumentar_cantidad, name='aumentar_cantidad'),
+    # ...
 ]

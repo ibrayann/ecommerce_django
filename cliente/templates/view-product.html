@@ -44,7 +44,7 @@
 
           <div class="form-group my-3">
             <label for="size">Selecciona tu talla de zapatilla:</label>
-            <select class="form-control" id="size">
+            <select class="form-control mt-3" id="size">
               <option value="">Selecciona una talla</option>
               <option value="39">39</option>
               <option value="39.5">39.5</option>
@@ -52,7 +52,11 @@
             </select>
           </div>
 
-          <a href="carro.html" class="btn btn-dark mt-2">Agregar al carro</a>
+          <a
+            href="{%url 'agregar_al_carrito' product.id %}"
+            class="btn btn-dark mt-2"
+            >Agregar al carro</a
+          >
         </div>
       </div>
     </div>

@@ -45,9 +45,13 @@
                   Crear usuario
                 </button>
               </form>
-              <div id="alertSuccess" class="d-none">Registro exitoso</div>
+              <div id="alertSuccess" class="d-none alert alert-success">
+                Registro exitoso
+              </div>
 
-              <div id="alertError" class="d-none">Error en el registro:</div>
+              <div id="alertError" class="d-none alert alert-error">
+                Error en el registro:
+              </div>
 
               <script>
                 const formulario = document.getElementById("formulario");
@@ -85,10 +89,6 @@
                 });
               </script>
             </div>
-            <div
-              class="alert alert-success mt-2 d-none w-75 mx-auto"
-              id="alertSuccess"
-            ></div>
           </div>
           <div class="col-md-6 d-none d-sm-block">
             <img

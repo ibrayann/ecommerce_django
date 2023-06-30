@@ -1,12 +1,14 @@
-
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.models import User, Group, Permission
 from django.http import JsonResponse
 from .models import Product, Cart, CartItem
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth import authenticate, login, logout
 
 
 
+@login_required
 def home(request):
     products = Product.objects.all()
     context = {
@@ -14,6 +16,7 @@ def home(request):
     }
     return render(request, 'Home.html', context)
 
+@login_required
 def hombre(request):
     products = Product.objects.all()
     context = {
@@ -21,6 +24,7 @@ def hombre(request):
     }
     return render(request, 'products.html', context)
 
+@login_required
 def mujeres(request):
     products = Product.objects.all()
     context = {
@@ -28,11 +32,12 @@ def mujeres(request):
     }
     return render(request, 'products-mujer.html', context)
 
+
 def calculate_discounted_price(price, discount_percentage):
     discounted_price = price * (1 - discount_percentage/100)
     return discounted_price
 
-
+@login_required
 def sale(request):
     products = Product.objects.all()
     discount_percentage = 20  # Porcentaje de descuento (ajústalo según sea necesario)
@@ -47,12 +52,14 @@ def sale(request):
 
     return render(request, 'sales.html', context)
 
+@user_passes_test(lambda user: user.is_superuser)
 def listarproductos(request):
     products = Product.objects.all()
     context = {
         'products': products
     }
     return render(request, 'listado-productos.html', context)
+
 
 def editar_producto(request, id):
     product = get_object_or_404(Product,id=id)
@@ -85,13 +92,13 @@ def editar_producto(request, id):
     return redirect(to="login")
 
     
-
+@user_passes_test(lambda user: user.is_superuser)
 def eliminar_producto(request, id):
     product = get_object_or_404(Product,id=id)
     product.delete()
     return redirect(to="listar_productos")
 
-
+@user_passes_test(lambda user: user.is_superuser)
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -119,29 +126,43 @@ def register(request):
             return JsonResponse({'errores': ['El usuario ya existe']}, status=400)
 
         # Crear el nuevo usuario y guardar en la base de datos
-        User.objects.create_user(username=username, password=password, email=email)
+        user = User.objects.create_user(username=username, password=password, email=email)
+
+        # Obtener el permiso "can view product"
+        content_type = ContentType.objects.get(app_label='cliente', model='product')
+        permission = Permission.objects.get(content_type=content_type, codename='view_product')
+
+        # Agregar el permiso al usuario
+        user.user_permissions.add(permission)
 
         return JsonResponse({'mensaje': 'Registrado con éxito'})
 
     return render(request, 'registro.html')
 
-
+@login_required
 def detalle_producto(request, producto_id):
     producto = get_object_or_404(Product, id=producto_id)
     return render(request, 'view-product.html', {'product': producto})
 
 
-def login(request):
-    # Lógica para el inicio de sesión de usuarios
+def user_login(request):
     if request.method == 'POST':
-        # Procesar el formulario de inicio de sesión
-        # Verificar las credenciales del usuario
-        return redirect('dashboard')
-    else:
-        # Mostrar el formulario de inicio de sesión
-        return render(request, 'login.html')
+        username = request.POST['username']
+        password = request.POST['password']
 
+        # Autenticar al usuario
+        user = authenticate(request, username=username, password=password)
 
+        if user is not None:
+            # Iniciar sesión
+            login(request, user)
+            return JsonResponse({'mensaje': 'Inició sesión con éxito'}) 
+        else:
+            return JsonResponse({'errores': ['Credenciales inválidas']}, status=400)
+
+    return render(request, 'login.html')
+
+@user_passes_test(lambda user: user.is_superuser)
 def dashboard(request):
     if request.method == 'POST':
         nombre = request.POST['nombre']
@@ -190,7 +211,9 @@ def dashboard(request):
     
     return render(request, 'admin.html')
 
-   
+def logout_view(request):
+    logout(request)
+    return redirect(to='login')   
 
 @login_required
 def add_to_cart(request, product_id):
@@ -210,3 +233,50 @@ def cart(request):
     cart_items = cart.cartitem_set.all()
     return render(request, 'carro.html', {'cart_items': cart_items})
 
+@login_required
+def agregar_al_carrito(request, product_id):
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    product = get_object_or_404(Product, id=product_id)
+
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+
+    return redirect('carrito')
+@login_required
+def carrito(request):
+    cart = Cart.objects.filter(user=request.user).first()
+    total = cart.total if cart else 0
+    cart_items = cart.cartitem_set.select_related('product') if cart else []
+
+    
+
+    context = {
+        'cart': cart_items,
+        'total': total
+    }
+
+    return render(request, 'carro.html', context)
+
+@login_required
+def disminuir_cantidad(request, cart_item_id):
+    cart_item = get_object_or_404(CartItem, id=cart_item_id)
+    
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+    elif cart_item.quantity == 1:
+        cart_item.delete()
+    
+    return redirect('carrito')
+
+@login_required
+def aumentar_cantidad(request, cart_item_id):
+    cart_item = get_object_or_404(CartItem, id=cart_item_id)
+    
+    if cart_item.quantity < 15:
+        cart_item.quantity += 1
+        cart_item.save()
+    
+    return redirect('carrito')

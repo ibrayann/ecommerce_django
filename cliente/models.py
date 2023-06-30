@@ -13,14 +13,14 @@ class User(AbstractUser):
         'auth.Group',
         verbose_name='groups',
         blank=True,
-        related_name='cliente_user_set',
+        related_name='auth_user_set',
         related_query_name='user',
     )
     user_permissions = models.ManyToManyField(
         'auth.Permission',
         verbose_name='user permissions',
         blank=True,
-        related_name='cliente_user_set',
+        related_name='auth_user_set',
         related_query_name='user',
     )
 
@@ -48,9 +48,19 @@ class Product(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, through='CartItem')
+    @property
+    def total(self):
+        cart_items = self.cartitem_set.all()
+        total = sum(item.subtotal for item in cart_items)
+        return total
+
+    
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
+    @property
+    def subtotal(self):
+        return self.quantity * self.product.price
     # Otros campos si es necesario

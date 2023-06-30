@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'cliente'
 ]
 
-AUTH_USER_MODEL = 'cliente.User'
 
 
 

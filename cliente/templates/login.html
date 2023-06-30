@@ -9,18 +9,14 @@
             <div class="align-items-center p-4">
               <form
                 style="width: 100%"
+                action="{% url 'login' %}"
                 id="miFormulario"
-                action="#"
-                method="post"
+                method="POST"
               >
+                {% csrf_token %}
                 <div class="form-outline mb-4">
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    class="form-control"
-                  />
-                  <label class="form-label mt-2" for="email">Email</label>
+                  <input id="username" name="username" class="form-control" />
+                  <label class="form-label mt-2" for="email">UserName</label>
                 </div>
 
                 <input
@@ -53,6 +49,46 @@
                   >
                 </p>
               </form>
+              <div id="alertSuccess" class="d-none">Registro exitoso</div>
+
+              <div id="alertError" class="d-none alert alert-danger">
+                Error en el registro:
+              </div>
+              <script>
+                const formulario = document.getElementById("miFormulario");
+                const userName = document.getElementById("username");
+                const userPassword = document.getElementById("password");
+                const alertSuccess = document.getElementById("alertSuccess");
+                const alertError = document.getElementById("alertError");
+
+                formulario.addEventListener("submit", async (e) => {
+                  e.preventDefault();
+
+                  alertSuccess.classList.add("d-none");
+                  alertError.classList.add("d-none");
+
+                  const response = await fetch("/login/", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams(new FormData(formulario)),
+                  });
+
+                  if (response.ok) {
+                    const data = await response.json();
+                    alertSuccess.classList.add("d-block");
+                    alertSuccess.classList.remove("d-none");
+                    alertSuccess.textContent = data.mensaje;
+                    window.location.href = "/";
+                  } else {
+                    const data = await response.json();
+                    alertSuccess.classList.add("d-block");
+                    alertError.classList.remove("d-none");
+                    alertError.textContent = data.errores.join("\n");
+                  }
+                });
+              </script>
             </div>
           </div>
           <div class="col-md-6 d-none d-sm-block">
