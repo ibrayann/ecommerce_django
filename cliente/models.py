@@ -40,6 +40,7 @@ class Product(models.Model):
     gender = models.CharField(max_length=20)
     model = models.CharField(max_length=50)
     image = models.ImageField(upload_to='productos', null=True)
+    stock = models.PositiveIntegerField(default=1000)
     # Otros campos relevantes para el producto
     
     def __str__(self):
@@ -64,3 +65,12 @@ class CartItem(models.Model):
     def subtotal(self):
         return self.quantity * self.product.price
     # Otros campos si es necesario
+
+class Purchase(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    total = models.DecimalField(max_digits=10, decimal_places=2)  # Puedes ajustar los parámetros según tus necesidades
+
+    def __str__(self):
+        return f"Purchase #{self.id}"

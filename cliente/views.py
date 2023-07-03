@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User, Group, Permission
 from django.http import JsonResponse
-from .models import Product, Cart, CartItem
+from .models import Product, Cart, CartItem, Purchase
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import authenticate, login, logout
+from django.db import transaction
 
 
 
@@ -254,7 +255,8 @@ def carrito(request):
 
     context = {
         'cart': cart_items,
-        'total': total
+        'total': total,
+        'cart_id': cart.id, 
     }
 
     return render(request, 'carro.html', context)
@@ -280,3 +282,37 @@ def aumentar_cantidad(request, cart_item_id):
         cart_item.save()
     
     return redirect('carrito')
+
+def realizar_compra(request):
+    # Obtener el usuario actual y su carrito
+    user = request.user
+    cart = get_object_or_404(Cart, user=user)
+
+    # Calcular el total del carrito
+    total = cart.total
+
+    with transaction.atomic():
+        # Restar el stock de cada producto en el carrito
+        for item in cart.cartitem_set.all():
+            product = item.product
+            product.stock -= item.quantity
+            product.save()
+
+        # Crear la instancia de la compra
+        purchase = Purchase.objects.create(user=user, cart=cart, total=total)
+
+        # Reiniciar el carrito
+        cart.products.clear()
+
+    # Redirigir a una página de confirmación o a donde desees
+    return redirect('home')  # Ajusta la URL según tu configuración
+
+def ordenes(request):
+    user = request.user
+    pedidos = Purchase.objects.filter(user=user)
+
+    context = {
+        'pedidos': pedidos
+    }
+
+    return render(request, 'ordenes.html', context)

@@ -53,7 +53,15 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'sale' %}">Sale</a>
             </li>
+            <li>
+              <a href="{% url 'ordenes' %}" class="nav-link">Ver Ordenes</a>
+            </li>
+            {% if user.is_superuser %}
+            <li><a class="nav-link" href="{% url 'dashboard' %}">Admin</a></li>
+
+            <li>{% endif %}</li>
           </ul>
+
           <form class="d-flex">
             <input
               class="form-control me-2 rounded-pill"

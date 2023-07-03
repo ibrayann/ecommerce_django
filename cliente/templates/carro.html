@@ -74,10 +74,12 @@
             <p class="fw-bold">Total</p>
             <strong>${{ total }}</strong>
           </div>
-          <a href="" class="my-3 btn btn-dark btn-outline-light d-block"
+          <a
+            href="{%url 'realizar_compra' %}"
+            class="my-3 btn btn-dark btn-outline-light d-block"
             >Pagar</a
           >
-          <a href="../Home.html" class="my-3 btn btn-light d-block"
+          <a href="{% url 'home' %}" class="my-3 btn btn-light d-block"
             >Seguir comprando</a
           >
         </div>

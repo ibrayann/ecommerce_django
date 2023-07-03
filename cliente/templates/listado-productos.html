@@ -101,7 +101,7 @@
     <div class="col-sm-12 col-md-2">
       <div class="card mb-2">
         <ul class="list-group list-group-flush">
-          <a href="listado-productos.html" class="list-group-item"
+          <a href="{% url 'listar_productos' %}" class="list-group-item"
             >Todos los productos</a
           >
           <a href="{% url 'dashboard' %}" class="list-group-item"
@@ -111,8 +111,8 @@
       </div>
       <div class="card mb-2">
         <ul class="list-group list-group-flush">
-          <a href="ordenes.html" class="list-group-item">Ver Ordenes</a>
-          <a href="devoluciones.html" class="list-group-item">Devoluciones</a>
+          <a href="{% url 'ordenes' %}" class="list-group-item">Ver Ordenes</a>
+          <a hhref="{% url 'ordenes' %}"class="list-group-item">Devoluciones</a>
         </ul>
       </div>
     </div>
