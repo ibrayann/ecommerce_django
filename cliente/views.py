@@ -368,3 +368,12 @@ def perfil(request):
     }
     return render(request, 'perfil.html', context)
 
+def ordenesAdmin(request):
+    pedidos = Purchase.objects.all()
+
+    context = {
+        'pedidos': pedidos
+    }
+
+    return render(request, 'ordenesAd.html', context)
+

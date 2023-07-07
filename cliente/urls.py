@@ -26,5 +26,6 @@ urlpatterns = [
     path('perfil/', views.perfil, name='perfil'),
     path('editaruser/<id>/', views.editar_usuario,name="editar_usuario"),
     path('eliminaruser/<id>/',views.eliminar_usuario,name="eliminar_usuario"),
+    path('ordenesAdmin/', views.ordenesAdmin, name='ordenesAdmin'),
     # ...
 ]

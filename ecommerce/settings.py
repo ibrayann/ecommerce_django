@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cliente'
+    'cliente',
+    
 ]
 
 
@@ -86,6 +87,20 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+""" DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': '127.0.0.1:8000/xe',
+        'USER': 'ecommerce',
+        'PASSWORD': 'ecommerce_pass',
+        'TEST': {
+            'USER': 'default_test',
+            'TBLSPACE': 'default_test_tbls',
+            'TBLSPACE_TMP': 'default_test_tbls_tmp',
+        },
+    },
+} """
 
 
 # Password validation
