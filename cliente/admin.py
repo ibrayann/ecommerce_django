@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Cart, CartItem
+from .models import Product, Cart, CartItem, Purchase, PurchaseItem
 
 
 class ProductoAdmin(admin.ModelAdmin):
@@ -22,4 +22,17 @@ class CartItemAdmin(admin.ModelAdmin):
     list_filter = ['cart']
 
 admin.site.register(CartItem, CartItemAdmin)
+
+class PurcharseItemm(admin.ModelAdmin):
+    list_display = ['product', 'quantity']
+    list_filter = ['purchase']
+
+admin.site.register(PurchaseItem, PurcharseItemm)
+
+class PurchaseAdmin(admin.ModelAdmin):
+    list_display = ['user', 'date', 'total']
+    list_filter = ['user']
+
+admin.site.register(Purchase, PurchaseAdmin)
+
 

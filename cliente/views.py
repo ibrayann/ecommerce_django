@@ -2,14 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User, Group, Permission
 from django.http import JsonResponse
-from .models import Product, Cart, CartItem, Purchase
+from .models import Product, Cart, CartItem, Purchase, PurchaseItem
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import authenticate, login, logout
 from django.db import transaction
 
 
 
-@login_required
+
 def home(request):
     products = Product.objects.all()
     context = {
@@ -99,7 +99,7 @@ def eliminar_producto(request, id):
     product.delete()
     return redirect(to="listar_productos")
 
-@user_passes_test(lambda user: user.is_superuser)
+
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -162,7 +162,6 @@ def user_login(request):
             return JsonResponse({'errores': ['Credenciales inválidas']}, status=400)
 
     return render(request, 'login.html')
-
 @user_passes_test(lambda user: user.is_superuser)
 def dashboard(request):
     if request.method == 'POST':
@@ -290,6 +289,7 @@ def realizar_compra(request):
 
     # Calcular el total del carrito
     total = cart.total
+    
 
     with transaction.atomic():
         # Restar el stock de cada producto en el carrito
@@ -297,9 +297,14 @@ def realizar_compra(request):
             product = item.product
             product.stock -= item.quantity
             product.save()
+            
 
         # Crear la instancia de la compra
         purchase = Purchase.objects.create(user=user, cart=cart, total=total)
+
+        for item in cart.cartitem_set.all():
+            product = item.product
+            purchase_item = PurchaseItem.objects.create(purchase=purchase, product=product, quantity=item.quantity)
 
         # Reiniciar el carrito
         cart.products.clear()
@@ -316,3 +321,50 @@ def ordenes(request):
     }
 
     return render(request, 'ordenes.html', context)
+
+
+
+@login_required
+def editar_usuario(request, id):
+    # Obtener el usuario que se desea editar
+    user = get_object_or_404(User, id=id)
+
+    if request.method == 'POST':
+        # Obtener los datos enviados en el formulario
+        username = request.POST['username']
+        email = request.POST['email']
+        # Otros campos que deseas editar
+
+        # Actualizar los campos del usuario
+        user.username = username
+        user.email = email
+        # Actualizar otros campos si es necesario
+
+        # Guardar los cambios en la base de datos
+        user.save()
+
+        # Redirigir a una página de éxito o a donde desees
+        return redirect(to = 'perfil')  # Ajusta la URL según tu configuración
+    return redirect( to="home" )
+
+
+@login_required
+def eliminar_usuario(request, id):
+    # Obtener el usuario que se desea eliminar
+    user = get_object_or_404(User, id=id)
+    if user:
+
+        # Eliminar el usuario
+        user.delete()
+
+        # Redirigir a una página de éxito o a donde desees
+        return redirect( to ='login')  # Ajusta la URL según tu 
+    return redirect( to="perfil" )
+
+def perfil(request):
+    user = request.user
+    context = {
+        'user': user
+    }
+    return render(request, 'perfil.html', context)
+

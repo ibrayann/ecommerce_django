@@ -182,6 +182,20 @@
   </div>
 </div>
 
+<script>
+  fetch("https://mindicador.cl/api")
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("dolar").textContent =
+        "El valor del dolar hoy es de $" + data.dolar.valor;
+      document.getElementById("euro").textContent =
+        "El valor del euro hoy es de $" + data.dolar.valor;
+      document.getElementById("bitcoin").textContent =
+        "El valor del bitcoin hoy es de $" + data.bitcoin.valor;
+    })
+    .catch((error) => console.log("Error al consumir la API!", error));
+</script>
+
 <!-- aca va el consumo de api de dolar en JS-->
 
 <!-- Footer -->
