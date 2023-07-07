@@ -9,7 +9,7 @@ from django.db import transaction
 
 
 
-
+@login_required
 def home(request):
     products = Product.objects.all()
     context = {
@@ -61,7 +61,7 @@ def listarproductos(request):
     }
     return render(request, 'listado-productos.html', context)
 
-
+@user_passes_test(lambda user: user.is_superuser)
 def editar_producto(request, id):
     product = get_object_or_404(Product,id=id)
     if request.method == 'POST':
@@ -281,7 +281,7 @@ def aumentar_cantidad(request, cart_item_id):
         cart_item.save()
     
     return redirect('carrito')
-
+@login_required
 def realizar_compra(request):
     # Obtener el usuario actual y su carrito
     user = request.user
@@ -311,7 +311,7 @@ def realizar_compra(request):
 
     # Redirigir a una página de confirmación o a donde desees
     return redirect('home')  # Ajusta la URL según tu configuración
-
+@login_required
 def ordenes(request):
     user = request.user
     pedidos = Purchase.objects.filter(user=user)
@@ -360,14 +360,14 @@ def eliminar_usuario(request, id):
         # Redirigir a una página de éxito o a donde desees
         return redirect( to ='login')  # Ajusta la URL según tu 
     return redirect( to="perfil" )
-
+@login_required
 def perfil(request):
     user = request.user
     context = {
         'user': user
     }
     return render(request, 'perfil.html', context)
-
+@login_required
 def ordenesAdmin(request):
     pedidos = Purchase.objects.all()
 
