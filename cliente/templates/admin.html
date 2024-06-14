@@ -63,12 +63,8 @@
 
             <div class="mb-3">
               <label for="marca" class="form-label">Marca</label>
-              <select class="form-control" id="marca" name="marca">
-                <option value="nike">Nike</option>
-                <option value="adidas">Adidas</option>
-                <option value="puma">Puma</option>
-                <!-- Agrega más opciones de marca según sea necesario -->
-              </select>
+              <input class="form-control" type="text" id="marca" name="marca">
+              </input>
               <p class="text-danger mb-2 d-none" id="alertMarca"></p>
             </div>
 
@@ -94,28 +90,20 @@
                 name="imagen"
               />
             </div>
-
             <div class="mb-3">
-              <label for="size" class="form-label">Talla de zapatilla</label>
+              <label for="model" class="form-label">Modelo</label>
               <input
                 type="text"
                 class="form-control"
-                id="size"
-                placeholder="Talla de zapatilla"
-                name="size"
+                id="model"
+                placeholder="Modelo"
+                name="model"
               />
-              <p class="text-danger mb-2 d-none" id="alertSize"></p>
+              <p class="text-danger mb-2 d-none" id="alertModel"></p>
             </div>
 
-            <div class="mb-3">
-              <label for="gender" class="form-label">Género</label>
-              <select class="form-control" id="gender" name="gender">
-                <option value="masculino">Masculino</option>
-                <option value="femenino">Femenino</option>
-              </select>
-              <p class="text-danger mb-2 d-none" id="alertGender"></p>
-            </div>
 
+            adaptar para mandar stock , debe ser name stock por api
             <div class="mb-3">
               <label for="model" class="form-label">Modelo</label>
               <input

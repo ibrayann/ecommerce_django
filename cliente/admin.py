@@ -3,8 +3,8 @@ from .models import Product, Cart, CartItem, Purchase, PurchaseItem
 
 
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ['name', 'brand', 'price', 'size', 'gender', 'model']
-    list_filter = ['brand', 'gender']
+    list_display = ['name', 'brand', 'price', 'model',"stock"]
+
 
 admin.site.register(Product, ProductoAdmin)
 

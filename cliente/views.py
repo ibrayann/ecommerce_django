@@ -56,8 +56,12 @@ def sale(request):
 @user_passes_test(lambda user: user.is_superuser)
 def listarproductos(request):
     products = Product.objects.all()
+    low_stock = Product.objects.filter(stock__lte=500) 
     context = {
-        'products': products
+        'products': products,
+        'cantidad_low_stock': len(low_stock),
+        "low_stock": low_stock
+        
     }
     return render(request, 'listado-productos.html', context)
 
@@ -70,19 +74,16 @@ def editar_producto(request, id):
         precio = request.POST['precio']
         marca = request.POST['marca']
         descripcion = request.POST['descripcion']
-        size = request.POST['size']
-        gender = request.POST['gender']
         model = request.POST['model']
-        # Otros campos del formulario
+        stock = request.POST['stock']
 
         # Actualiza los datos del producto
         product.name = nombre
         product.price = precio
         product.brand = marca
         product.description = descripcion
-        product.size = size
-        product.gender = gender
         product.model = model
+        product.stock = stock
         # Otros campos del producto
 
         # Guarda los cambios en la base de datos
@@ -169,11 +170,8 @@ def dashboard(request):
         precio = request.POST['precio']
         marca = request.POST['marca']
         descripcion = request.POST['descripcion']
-        print(request.FILES)  # A
         imagen = request.FILES['imagen']
-        size = request.POST['size']
-        gender = request.POST['gender']
-        model = request.POST['model']
+        stock = request.POST['stock']
         
         # Validar los campos
         errores = []
@@ -190,23 +188,24 @@ def dashboard(request):
         if not descripcion.strip():
             errores.append("La descripción del producto es requerida")
 
-        if not size.strip():
-            errores.append("El campo de la talla de zapatilla es requerido")
+        if not imagen:
+            errores.append("Debe seleccionar una imagen")
 
-        if not gender.strip():
-            errores.append("Debe seleccionar el género del producto")
+        if not stock.strip() or int(stock) < 0:
+            errores.append("Formato no válido para el stock, debe ser un número mayor o igual a 0")
+        
 
-        if not model.strip():
-            errores.append("El campo de modelo es requerido")
+    
+    
 
         if errores:
             return JsonResponse({'errores': errores}, status=400)
         
         # Crea el nuevo producto y guárdalo en la base de datos
         Product.objects.create(name=nombre, price=precio, brand=marca, description=descripcion,
-                        image=imagen, size=size, gender=gender, model=model)
+                        image=imagen, stock=stock)
 
-        
+         
         return JsonResponse({'mensaje': 'Producto cargado con éxito'})
     
     return render(request, 'admin.html')
@@ -376,4 +375,12 @@ def ordenesAdmin(request):
     }
 
     return render(request, 'ordenesAd.html', context)
+
+
+def bajoStock(request):
+    products = Product.objects.filter(stock <= 500)
+    context = {
+        'products': products
+    }
+    return render(request, 'bajoStock.html', context)
 

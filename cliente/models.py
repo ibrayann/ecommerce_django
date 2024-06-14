@@ -24,24 +24,14 @@ class User(AbstractUser):
         related_query_name='user',
     )
 
-class Product(models.Model):
-    BRAND_CHOICES = [
-        ('nike', 'Nike'),
-        ('adidas', 'Adidas'),
-        ('puma', 'Puma'),
-        # Agrega más opciones de marca según sea necesario
-    ]
-    
+class Product(models.Model):    
     name = models.CharField(max_length=100)
     description = models.TextField()
-    brand = models.CharField(max_length=50, choices=BRAND_CHOICES)
+    brand = models.CharField(max_length=50)
     price = models.IntegerField()
-    size = models.CharField(max_length=10)
-    gender = models.CharField(max_length=20)
     model = models.CharField(max_length=50)
     image = models.ImageField(upload_to='productos', null=True)
-    stock = models.PositiveIntegerField(default=1000)
-    # Otros campos relevantes para el producto
+    stock = models.PositiveIntegerField(default=300)
     
     def __str__(self):
         return self.name
