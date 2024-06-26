@@ -46,24 +46,15 @@
           </div>
 
           <div class="mb-3">
-            <label for="size" class="form-label">Talla de zapatilla</label>
-            <input type="text" class="form-control" id="size" placeholder="Talla de zapatilla" name="size" value="{{ product.size }}">
-            <p class="text-danger mb-2 d-none" id="alertSize"></p>
-          </div>
-
-          <div class="mb-3">
-            <label for="gender" class="form-label">Género</label>
-            <select class="form-control" id="gender" name="gender">
-              <option value="masculino" {% if product.gender == 'masculino' %} selected {% endif %}>Masculino</option>
-              <option value="femenino" {% if product.gender == 'femenino' %} selected {% endif %}>Femenino</option>
-            </select>
-            <p class="text-danger mb-2 d-none" id="alertGender"></p>
-          </div>
-
-          <div class="mb-3">
             <label for="model" class="form-label">Modelo</label>
             <input type="text" class="form-control" id="model" placeholder="Modelo" name="model" value="{{ product.model }}">
             <p class="text-danger mb-2 d-none" id="alertModel"></p>
+          </div>
+
+          <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="model" placeholder="Stock" name="stock" value="{{ product.stock }}">
+            <p class="text-danger mb-2 d-none" id="alertStock"></p>
           </div>
 
           <div class="text-end">
