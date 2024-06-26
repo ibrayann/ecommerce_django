@@ -25,12 +25,7 @@
 
           <div class="mb-3">
             <label for="marca" class="form-label">Marca</label>
-            <select class="form-control" id="marca" name="marca">
-              <option value="nike" {% if product.brand == 'nike' %} selected {% endif %}>Nike</option>
-              <option value="adidas" {% if product.brand == 'adidas' %} selected {% endif %}>Adidas</option>
-              <option value="puma" {% if product.brand == 'puma' %} selected {% endif %}>Puma</option>
-              <!-- Agrega más opciones de marca según sea necesario -->
-            </select>
+            <input type="text" class="form-control" id="marca" placeholder="Marca producto" name="marca" value="{{ product.marca }}">
             <p class="text-danger mb-2 d-none" id="alertMarca"></p>
           </div>
 
