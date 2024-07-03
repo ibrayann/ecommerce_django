@@ -20,8 +20,10 @@ def home(request):
 @login_required
 def hombre(request):
     products = Product.objects.all()
+    low_stock_products = Product.objects.filter(stock__lte=10) 
     context = {
-        'products': products
+        'products': products,
+        'low_stock_products': low_stock_products
     }
     return render(request, 'products.html', context)
 
@@ -56,12 +58,11 @@ def sale(request):
 @user_passes_test(lambda user: user.is_superuser)
 def listarproductos(request):
     products = Product.objects.all()
-    low_stock = Product.objects.filter(stock__lte=500) 
+    low_stock = Product.objects.filter(stock__lte=10)  # Cambia a 10 según tu requerimiento
     context = {
         'products': products,
         'cantidad_low_stock': len(low_stock),
-        "low_stock": low_stock
-        
+        'low_stock': low_stock
     }
     return render(request, 'listado-productos.html', context)
 

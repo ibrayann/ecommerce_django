@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %} {% load static%}
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static%}
 <!-- Modal -->
 {% for product in products %}
 <div class="modal fade" id="exampleModal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -189,5 +191,26 @@
     </div>
   </div>
 </div>
+
+<!-- Incluye SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var lowStockProducts = {{ low_stock|safe }};
+        if (lowStockProducts.length > 0) {
+            var productList = lowStockProducts.map(function(product) {
+                return '<li>' + product.name + ' (Stock: ' + product.stock + ')</li>';
+            }).join('');
+
+            Swal.fire({
+                title: 'Productos con Bajo Stock',
+                html: '<ul>' + productList + '</ul>',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+</script>
 
 {% endblock %}
