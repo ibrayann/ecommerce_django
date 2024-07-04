@@ -1,63 +1,147 @@
-{% extends 'base.html' %} 
-{% block content %} 
-{% load static%}
+{% extends 'base.html' %} {% block content %} {% load static%}
 <!-- Modal -->
 {% for product in products %}
-<div class="modal fade" id="exampleModal{{ product.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal{{ product.id }}"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{ product.name }}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-        <form method="POST" id="registroProducto" action="{%url 'editar_producto' product.id %}" class="px-5" enctype="multipart/form-data">
+        <form
+          method="POST"
+          id="registroProducto"
+          action="{%url 'editar_producto' product.id %}"
+          class="px-5"
+          enctype="multipart/form-data"
+        >
           {% csrf_token %}
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre producto</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre producto" name="nombre" value="{{ product.name }}">
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              placeholder="Nombre producto"
+              name="nombre"
+              value="{{ product.name }}"
+            />
             <p class="text-danger mb-2 d-none" id="alertNombre"></p>
           </div>
 
           <div class="mb-3">
             <label for="precio" class="form-label">Precio</label>
-            <input type="number" min="1000" class="form-control" id="precio" placeholder="Precio producto" name="precio" value="{{ product.price }}">
+            <input
+              type="number"
+              min="1000"
+              class="form-control"
+              id="precio"
+              placeholder="Precio producto"
+              name="precio"
+              value="{{ product.price }}"
+            />
             <p class="text-danger mb-2 d-none" id="alertPrecio"></p>
           </div>
 
           <div class="mb-3">
             <label for="marca" class="form-label">Marca</label>
-            <input type="text" class="form-control" id="marca" placeholder="Marca producto" name="marca" value="{{ product.marca }}">
+            <input
+              type="text"
+              class="form-control"
+              id="marca"
+              placeholder="Marca producto"
+              name="marca"
+              value="{{ product.marca }}"
+            />
             <p class="text-danger mb-2 d-none" id="alertMarca"></p>
           </div>
 
           <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripcion producto</label>
-            <textarea class="form-control" id="descripcion" rows="3" name="descripcion">{{ product.description }}</textarea>
+            <label for="descripcion" class="form-label"
+              >Descripcion producto</label
+            >
+            <textarea
+              class="form-control"
+              id="descripcion"
+              rows="3"
+              name="descripcion"
+            >
+{{ product.description }}</textarea
+            >
             <p class="text-danger mb-2 d-none" id="alertDescripcion"></p>
           </div>
 
           <div class="mb-3">
             <label for="imagen" class="form-label">Imagen producto</label>
-            <input type="file" class="form-control" id="imagen" name="imagen">
+            <input type="file" class="form-control" id="imagen" name="imagen" />
           </div>
 
           <div class="mb-3">
             <label for="model" class="form-label">Modelo</label>
-            <input type="text" class="form-control" id="model" placeholder="Modelo" name="model" value="{{ product.model }}">
+            <input
+              type="text"
+              class="form-control"
+              id="model"
+              placeholder="Modelo"
+              name="model"
+              value="{{ product.model }}"
+            />
             <p class="text-danger mb-2 d-none" id="alertModel"></p>
           </div>
 
           <div class="mb-3">
             <label for="stock" class="form-label">Stock</label>
-            <input type="text" class="form-control" id="model" placeholder="Stock" name="stock" value="{{ product.stock }}">
+            <input
+              type="text"
+              class="form-control"
+              id="model"
+              placeholder="Stock"
+              name="stock"
+              value="{{ product.stock }}"
+            />
             <p class="text-danger mb-2 d-none" id="alertStock"></p>
+          </div>
+          <div class="mb-3">
+            <label for="category" class="form-label">Categoria</label>
+            <select id="category" name="category" class="form-control">
+              <option value="Herramientas Electricas">
+                Herramientas Electricas
+              </option>
+              <option value="Herramientas Manuales">
+                Herramientas Manuales
+              </option>
+              <option value="Materiales de construccion">
+                Materiales de construccion
+              </option>
+            </select>
           </div>
 
           <div class="text-end">
-            <button type="cancel" class="btn btn-outline-dark mb-2" data-bs-dismiss="modal">Cancel</button>
+            <button
+              type="cancel"
+              class="btn btn-outline-dark mb-2"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
             <button type="submit" class="btn btn-dark mb-2">Guardar</button>
-            <a href="{%url 'eliminar_producto' product.id %}"  class="btn btn-danger">Eliminar</a>
+            <a
+              href="{%url 'eliminar_producto' product.id %}"
+              class="btn btn-danger"
+              >Eliminar</a
+            >
           </div>
         </form>
 
@@ -69,7 +153,6 @@
           Error en el registro:
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -95,9 +178,10 @@
           <a href="{% url 'dashboard' %}" class="list-group-item"
             >Agregar un nuevo producto</a
           >
-        
 
-          <a href="{% url 'ordenesAdmin' %}"  class="list-group-item">Ver Ordenes</a>
+          <a href="{% url 'ordenesAdmin' %}" class="list-group-item"
+            >Ver Ordenes</a
+          >
         </ul>
       </div>
     </div>
@@ -106,15 +190,12 @@
       <section class="card p-5">
         <h4 class="card-tittle mb-4 fw-bold text-success">Products</h4>
 
-         <div class="d-flex justify-content-evenly">
-        <div class="bg-success ">
-            CARD1
-        </div>
-        <div class="bg-danger ">
-
+        <div class="d-flex justify-content-evenly">
+          <div class="bg-success">CARD1</div>
+          <div class="bg-danger">
             Productos con bajo stock: {{ cantidad_low_stock }}
+          </div>
         </div>
-    </div>
         <input
           type="text"
           class="form-control my-2 rounded-pill"
@@ -196,21 +277,21 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var lowStockProducts = {{ low_stock|safe }};
-        if (lowStockProducts.length > 0) {
-            var productList = lowStockProducts.map(function(product) {
-                return '<li>' + product.name + ' (Stock: ' + product.stock + ')</li>';
-            }).join('');
+  document.addEventListener('DOMContentLoaded', function() {
+      var lowStockProducts = {{ low_stock|safe }};
+      if (lowStockProducts.length > 0) {
+          var productList = lowStockProducts.map(function(product) {
+              return '<li>' + product.name + ' (Stock: ' + product.stock + ')</li>';
+          }).join('');
 
-            Swal.fire({
-                title: 'Productos con Bajo Stock',
-                html: '<ul>' + productList + '</ul>',
-                icon: 'warning',
-                confirmButtonText: 'OK'
-            });
-        }
-    });
+          Swal.fire({
+              title: 'Productos con Bajo Stock',
+              html: '<ul>' + productList + '</ul>',
+              icon: 'warning',
+              confirmButtonText: 'OK'
+          });
+      }
+  });
 </script>
 
 {% endblock %}
