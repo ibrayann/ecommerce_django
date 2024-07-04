@@ -19,7 +19,7 @@ def home(request):
 
 @login_required
 def hombre(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(category='Herramientas Manuales')
     low_stock_products = Product.objects.filter(stock__lte=10) 
     context = {
         'products': products,
@@ -29,7 +29,7 @@ def hombre(request):
 
 @login_required
 def mujeres(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(category='Herramientas Electricas')
     context = {
         'products': products
     }
@@ -42,7 +42,7 @@ def calculate_discounted_price(price, discount_percentage):
 
 @login_required
 def sale(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(category='Materiales de construccion')
     discount_percentage = 20  # Porcentaje de descuento (ajústalo según sea necesario)
 
     # Calcular el precio descontado para cada producto
@@ -77,6 +77,7 @@ def editar_producto(request, id):
         descripcion = request.POST['descripcion']
         model = request.POST['model']
         stock = request.POST['stock']
+        category = request.POST['category']
 
         # Actualiza los datos del producto
         product.name = nombre
@@ -85,6 +86,7 @@ def editar_producto(request, id):
         product.description = descripcion
         product.model = model
         product.stock = stock
+        product.category = category
         # Otros campos del producto
 
         # Guarda los cambios en la base de datos
@@ -173,6 +175,7 @@ def dashboard(request):
         descripcion = request.POST['descripcion']
         imagen = request.FILES['imagen']
         stock = request.POST['stock']
+        category = request.POST['category']
         
         # Validar los campos
         errores = []
@@ -195,6 +198,8 @@ def dashboard(request):
         if not stock.strip() or int(stock) < 0:
             errores.append("Formato no válido para el stock, debe ser un número mayor o igual a 0")
         
+        if not category.strip():
+            errores.append("Debe seleccionar una categoría")
 
     
     
@@ -204,7 +209,7 @@ def dashboard(request):
         
         # Crea el nuevo producto y guárdalo en la base de datos
         Product.objects.create(name=nombre, price=precio, brand=marca, description=descripcion,
-                        image=imagen, stock=stock)
+                        image=imagen, stock=stock, category=category)
 
          
         return JsonResponse({'mensaje': 'Producto cargado con éxito'})

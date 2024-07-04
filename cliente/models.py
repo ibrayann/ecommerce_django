@@ -32,6 +32,7 @@ class Product(models.Model):
     model = models.CharField(max_length=50)
     image = models.ImageField(upload_to='productos', null=True)
     stock = models.PositiveIntegerField(default=300)
+    category = models.CharField(max_length=50, default="Herramientas Electricas")
     
     def __str__(self):
         return self.name

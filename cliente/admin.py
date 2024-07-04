@@ -3,7 +3,7 @@ from .models import Product, Cart, CartItem, Purchase, PurchaseItem
 
 
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ['name', 'brand', 'price', 'model',"stock"]
+    list_display = ['name', 'brand', 'price', 'model',"stock", "category"]
 
 
 admin.site.register(Product, ProductoAdmin)
