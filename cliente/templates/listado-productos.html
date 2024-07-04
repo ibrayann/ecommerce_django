@@ -49,6 +49,15 @@
           </div>
 
           <div class="mb-3">
+            <label for="category" class="form-label">Categoria</label>
+            <select id="category" name="category" class="form-control">
+                <option value="Herramientas Electricas">Herramientas Electricas</option>
+                <option value="Herramientas Manuales">Herramientas Manuales</option>
+                <option value="Materiales de construccion">Materiales de construccion</option>
+            </select>
+        </div>
+
+          <div class="mb-3">
             <label for="stock" class="form-label">Stock</label>
             <input type="text" class="form-control" id="model" placeholder="Stock" name="stock" value="{{ product.stock }}">
             <p class="text-danger mb-2 d-none" id="alertStock"></p>
