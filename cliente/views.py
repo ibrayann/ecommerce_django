@@ -19,11 +19,9 @@ def home(request):
 
 @login_required
 def hombre(request):
-    products = Product.objects.filter(category='Herramientas Manuales')
-    low_stock_products = Product.objects.filter(stock__lte=10) 
+    products = Product.objects.filter(category='Herramientas Manuales') 
     context = {
-        'products': products,
-        'low_stock_products': low_stock_products
+        'products': products
     }
     return render(request, 'products.html', context)
 
@@ -59,10 +57,12 @@ def sale(request):
 def listarproductos(request):
     products = Product.objects.all()
     low_stock = Product.objects.filter(stock__lte=10)  # Cambia a 10 según tu requerimiento
+    good_stock_count = Product.objects.filter(stock__gt=10).count()
     context = {
         'products': products,
         'cantidad_low_stock': len(low_stock),
-        'low_stock': low_stock
+        'low_stock': list(low_stock.values('name', 'stock')),  # Asegúrate de pasar datos serializables a JavaScript
+        'good_stock_count': good_stock_count,
     }
     return render(request, 'listado-productos.html', context)
 

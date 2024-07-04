@@ -102,6 +102,15 @@
           </div>
 
           <div class="mb-3">
+            <label for="category" class="form-label">Categoria</label>
+            <select id="category" name="category" class="form-control">
+                <option value="Herramientas Electricas">Herramientas Electricas</option>
+                <option value="Herramientas Manuales">Herramientas Manuales</option>
+                <option value="Materiales de construccion">Materiales de construccion</option>
+            </select>
+        </div>
+
+          <div class="mb-3">
             <label for="stock" class="form-label">Stock</label>
             <input
               type="text"
@@ -190,8 +199,17 @@
       <section class="card p-5">
         <h4 class="card-tittle mb-4 fw-bold text-success">Products</h4>
 
+<<<<<<< HEAD
         <div class="d-flex justify-content-evenly">
           <div class="card text-danger p-3">
+=======
+         <div class="d-flex justify-content-evenly">
+        <div class="bg-success ">
+          Productos con buen stock: {{ good_stock_count }}
+        </div>
+        <div class="bg-danger ">
+
+>>>>>>> bf8d4b272cb4c19c90a8e208b3a4f13ca6ea152d
             Productos con bajo stock: {{ cantidad_low_stock }}
           </div>
         </div>
