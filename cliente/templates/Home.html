@@ -78,7 +78,9 @@
     </div>
     <div class="col-12 d-flex align-items-center flex-column">
       <h2 class="text-center fw-bold display-3">HERRAMIENTAS PARA TODOS</h2>
-      <p class="fw-bold">Desde herramientas para soldar hasta herramientas de carpinteria</p>
+      <p class="fw-bold">
+        Desde herramientas para soldar hasta herramientas de carpinteria
+      </p>
       <a
         href="{% url 'hombre' %}"
         class="btn btn-outline-primary rounded-pill py-2 px-4 mt-3"
@@ -99,7 +101,7 @@
               <a
                 href="{% url 'detalle_producto' product.id %}"
                 class="btn btn-dark rounded-pill py-2 px-4 mt-3"
-                >Comprar</a
+                >Pedido</a
               >
             </div>
           </div>
@@ -107,26 +109,7 @@
         {% endfor %}
       </div>
     </div>
-    <div class="col-12">
-      <div class="card mb-5">
-        <img
-          src="{% static 'app/img/vitrina-constructor-a000525.webp' %}"
-          class="card-img img-fluid"
-          alt="..."
-          style="min-height: 400px"
-        />
-        <div
-          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
-        >
-          <h5 class="card-title text-white">Herramientas para especialistas</h5>
-          <a
-            href="{% url 'hombre' %}"
-            class="btn btn-dark rounded-pill py-2 px-4 mt-1"
-            >Comprar</a
-          >
-        </div>
-      </div>
-    </div>
+    <div class="col-12"></div>
     <div class="col-md-6 col-sm-12 mb-3">
       <div class="card">
         <img

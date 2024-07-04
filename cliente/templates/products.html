@@ -34,19 +34,6 @@
   </div>
 </div>
 
-{% if low_stock_products %}
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    Swal.fire({
-      title: "Productos con bajo stock",
-      html: "<ul>{% for product in low_stock_products %}<li>{{ product.name }} ({{ product.stock }} en stock)</li>{% endfor %}</ul>",
-      icon: "warning",
-      confirmButtonText: "Aceptar",
-    });
-  });
-</script>
-{% endif %}
-
 <!-- Footer xd -->
 <!-- Footer -->
 {% endblock %}
