@@ -107,81 +107,77 @@
         {% endfor %}
       </div>
     </div>
-    <div class="col-12">
-      <div class="card mb-5">
-        <img
-          src="{% static 'app/img/vitrina-constructor-a000525.webp' %}"
-          class="card-img img-fluid"
-          alt="..."
-          style="min-height: 400px"
-        />
-        <div
-          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
-        >
-          <h5 class="card-title text-white">Herramientas para especialistas</h5>
-          <a
-            href="{% url 'hombre' %}"
-            class="btn btn-dark rounded-pill py-2 px-4 mt-1"
-            >Comprar</a
-          >
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-5">
+            <img
+              src="{% static 'app/img/foto-comprar.jpg' %}"
+              class="card-img img-fluid"
+              alt="..."
+              style="height: 400px; object-fit: cover;"
+            />
+            <div class="card-img-overlay d-flex flex-column justify-content-end align-items-start">
+              <h5 class="card-title text-white">Herramientas para especialistas</h5>
+              <a href="{% url 'hombre' %}" class="btn btn-dark rounded-pill py-2 px-4 mt-1">Comprar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-3">
+          <div class="card">
+            <img
+              src="{% static 'app/img/foto-1.jpg' %}"
+              class="card-img img-fluid"
+              alt="..."
+              style="height: 400px; object-fit: cover;"
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-3">
+          <div class="card">
+            <img
+              src="{% static 'app/img/foto-2.jpg' %}"
+              class="card-img img-fluid"
+              alt="..."
+              style="height: 400px; object-fit: cover;"
+            />
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-2">
+          <div class="card">
+            <img
+              src="{% static 'app/img/foto-3.jpg' %}"
+              alt=""
+              class="card-img-top img-fluid"
+              style="height: 400px; object-fit: cover;"
+            />
+            <div class="card-img-overlay d-flex flex-column justify-content-end align-items-start"></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-2">
+          <div class="card">
+            <img
+              src="{% static 'app/img/foto-4.jpg' %}"
+              alt=""
+              class="card-img-top img-fluid"
+              style="height: 400px; object-fit: cover;"
+            />
+            <div class="card-img-overlay d-flex flex-column justify-content-end align-items-start"></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-2">
+          <div class="card">
+            <img
+              src="{% static 'app/img/foto-5.jpg' %}"
+              alt=""
+              class="card-img-top img-fluid"
+              style="height: 400px; object-fit: cover;"
+            />
+            <div class="card-img-overlay d-flex flex-column justify-content-end align-items-start"></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 col-sm-12 mb-3">
-      <div class="card">
-        <img
-          src="{% static 'app/img/herramientas1.jpg' %}"
-          class="card-img img-fluid"
-          alt="..."
-        />
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-12 mb-3">
-      <img
-        src="{% static 'app/img/herramientas2.jpg' %}"
-        class="card-img img-fluid"
-        alt="..."
-      />
-    </div>
-    <div class="col-md-4 col-sm-12 mb-2">
-      <div class="card">
-        <img
-          src="{% static 'app/img/herramientas3.jpg' %}"
-          alt=""
-          class="w-100 card-img-top"
-        />
-        <div
-          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
-        ></div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-2">
-      <div class="card">
-        <img
-          src="{% static 'app/img/herramientas4.webp' %}"
-          alt=""
-          class="w-100 card-img-top"
-        />
-        <div
-          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
-        ></div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-2">
-      <div class="card">
-        <img
-          src="{% static 'app/img/herramientas5.jpg' %}"
-          alt=""
-          class="w-100 card-img-top"
-        />
-        <div
-          class="card-img-overlay d-flex flex-column justify-content-end align-items-start"
-        ></div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
   fetch("https://mindicador.cl/api")
     .then((response) => response.json())
