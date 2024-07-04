@@ -57,10 +57,12 @@ def sale(request):
 def listarproductos(request):
     products = Product.objects.all()
     low_stock = Product.objects.filter(stock__lte=10)  # Cambia a 10 según tu requerimiento
+    good_stock_count = Product.objects.filter(stock__gt=10).count()
     context = {
         'products': products,
         'cantidad_low_stock': len(low_stock),
-        'low_stock': list(low_stock.values('name', 'stock'))  # Asegúrate de pasar datos serializables a JavaScript
+        'low_stock': list(low_stock.values('name', 'stock')),  # Asegúrate de pasar datos serializables a JavaScript
+        'good_stock_count': good_stock_count,
     }
     return render(request, 'listado-productos.html', context)
 
